@@ -5,6 +5,9 @@ import models.Product
 import play.api.Logger
 import play.api.libs.json._
 import play.api.mvc.{AbstractController, ControllerComponents}
+import play.api.routing.JavaScriptReverseRouter
+
+import scala.concurrent.Future
 
 @Singleton
 class ProductController @Inject()(cc: ControllerComponents)(implicit assetsFinder: AssetsFinder)
@@ -18,8 +21,23 @@ class ProductController @Inject()(cc: ControllerComponents)(implicit assetsFinde
     Ok(views.html.product(products))
   }
 
-  def showJson = Action { implicit request =>
+ /* def showJson = Action { implicit request =>
     logger.debug("showJson - parsing")
-    Ok(Json.toJson(Product(1, "Prod")))
+    val msg = Json.stringify(Json.toJson(Product(1, "Prod")))
+    Ok(views.html.viewsJson(msg))
+  }*/
+
+  def showJson = Action.async { implicit request =>
+    logger.debug("showJson - parsing")
+    val msg = Json.toJson(Product(1, "Prod"))
+    Future.successful(Ok(msg))
+  }
+
+  def jsRoutes = Action { implicit request =>
+    Ok(
+      JavaScriptReverseRouter("jsRoutes")(
+        routes.javascript.ProductController.showJson
+      )
+    ).as("text/javascript")
   }
 }

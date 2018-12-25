@@ -42,3 +42,6 @@ TODO:
 - Page using bootstrap - (first version of the page)
 - Play json serialization
 
+2. [2018-12-25]
+- Play send json to the client and show using jquery
+

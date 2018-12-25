@@ -14,3 +14,7 @@ GET     /assets/*file               controllers.Assets.versioned(file)
 
 GET     /product                    controllers.ProductController.show
 GET     /productJson                controllers.ProductController.showJson
+
+GET     /javascriptRoutes           controllers.ProductController.jsRoutes
+
+
