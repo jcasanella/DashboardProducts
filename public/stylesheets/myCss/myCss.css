@@ -4,3 +4,25 @@ footer {
   padding: 25px;
 }
 
+/* Css for the main menu */
+.nav-tabs{
+  background-color:#f2f2f2;
+}
+.tab-content{
+    background-color:#303136;
+    color:#fff;
+    padding:5px
+}
+.nav-tabs > li > a{
+  border: medium none;
+}
+.nav-tabs > li > a:hover{
+  background-color: #303136 !important;
+    border: medium none;
+    border-radius: 0;
+    color:#fff;
+}
+
+/* css for the icon to maximize card  and change cursor */
+.oi.oi-fullscreen-enter { float: right; }
+.oi.oi-fullscreen-enter:hover {cursor: pointer;}

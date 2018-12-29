@@ -45,3 +45,6 @@ TODO:
 2. [2018-12-25]
 - Play send json to the client and show using jquery
 
+3. [2018-12-29]
+- First prototype layout
+
