@@ -35,6 +35,8 @@ TODO:
 
 - Create a dashboard using websockets to create a Real Time dashboard
 
+- Start to use React js
+
 ## Changes
 
 1. [2018-12-24]
@@ -47,4 +49,7 @@ TODO:
 
 3. [2018-12-29]
 - First prototype layout
+
+4. [2018-12-30]
+- Refinament prototype layout - Show graph in the dashboard and maximize button
 

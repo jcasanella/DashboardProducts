@@ -1,12 +1,13 @@
 @(message: String, style: String = "scala") 
 
-@defining(play.core.PlayVersion.current) { version =>
-
+        <!-- Header and title -->
         <div class="jumbotron text-center">
             <h1>Products</h1>
             <p>This web app is done with play Scala - would like in the future to connect against hive and use websockets</p>
         </div>
+        <!-- End Header and title -->
 
+        <!-- Main menu -->
         <div class="container-fluid">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
@@ -16,137 +17,196 @@
                     <a class="nav-link" href="#">Link</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link <div id="slider"></div></a>
+                    <a class="nav-link" href="#">Link</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Disabled</a>
                 </li>
             </ul>
         </div>
+        <!-- End main menu -->
 
-
-        <div class="pos-f-t">
-            <div class="collapse" id="navbarToggleExternalContent">
-                <div class="bg-dark p-4">
-                    <h4 class="text-white">Collapsed content</h4>
-                    <span class="text-muted">
+        <!-- Filters and dashboards -->
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Filters on the left -->
+                <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link active" href="#">Active</a>
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                                        <div class="col-sm-10">
+                                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> Remember me
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputExample4" class="col-sm-2 control-label">Text to search</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" placeholder="Text input" id="inputExample4">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputExample5" class="col-sm-2 control-label">Text to search</label>
+                                        <div class="col-sm-10">
+                                            <select multiple class="form-control" id="inputExample5">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="submit" class="btn btn-default">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
+                                <a class="nav-link active" href="#">
+                                    <span data-feather="home"></span>
+                                    Dashboard <span class="sr-only">(current)</span>
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
+                                <a class="nav-link" href="#">
+                                    <span data-feather="file"></span>
+                                    Orders
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link disabled" href="#">Disabled</a>
+                                <a class="nav-link" href="#">
+                                    <span data-feather="shopping-cart"></span>
+                                    Products
+                                </a>
                             </li>
                         </ul>
-                    </span>
-                </div>
-            </div>
-            <nav class="navbar navbar-dark bg-dark">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </nav>
-        </div>
+                    </div>
+                </nav>
+                <!-- End Filters on the left -->
 
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-                </div>
-                <div class="col-sm">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Panel title</h5>
-                            <p class="card-text">Some quick example text to build on the panel title and make up the bulk of the panel's content.</p>
-                            <a class="card-link">Card link</a>
-                            <a class="card-link">Another link</a>
+                <!-- Dashboard - make up by different cards -->
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <h1 class="h2">Dashboard</h1>
+                        <div class="btn-toolbar mb-2 mb-md-0">
+                            <div class="btn-group mr-2">
+                                <button class="btn btn-sm btn-outline-secondary">Share</button>
+                                <button class="btn btn-sm btn-outline-secondary">Export</button>
+                            </div>
+                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                                <span data-feather="calendar"></span>
+                                This week
+                            </button>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card">
-                        <div class="card-header">
-                            Featured
-                            <span class="oi oi-fullscreen-enter" title="fullscreen-enter" aria-hidden="true" data-toggle="modal" data-target="#exampleModalCenter"></span>
+
+                    <!-- Definition of Dashboards -->
+                    <h2>Section title</h2>
+                    <div class="row">
+                        <!-- Chart top left -->
+                        <div class="col-sm">
+                            <h2>Heading</h2>
+                            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Panel title</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Panel subtitle</h6>
-                            <p class="card-text">Some quick example text to build on the panel title and make up the bulk of the panel's content.</p>
-                            <a class="card-link">Card link</a>
-                            <a class="card-link">Another link</a>
+                        <!-- End Chart top left -->
+
+                        <!-- Chart top right -->
+                        <div class="col-sm">
+                            <h2>Heading</h2>
+                            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
                         </div>
+                        <!-- End Chart top right -->
                     </div>
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    ...
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+
+                    <div class="row">
+                        <!-- Chart bottom left -->
+                        <div class="col-sm">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Panel title</h5>
+                                    <p class="card-text">Some quick example text to build on the panel title and make up the bulk of the panel's content.</p>
+                                    <a class="card-link">Card link</a>
+                                    <a class="card-link">Another link</a>
                                 </div>
                             </div>
                         </div>
+                        <!-- End Chart bottom left -->
+
+                        <!-- Chart bottom right -->
+                        <div class="col-sm">
+                            <div class="card">
+                                <div class="card-header">
+                                    Featured
+                                    <span id="maxChart" class="oi oi-fullscreen-enter" title="fullscreen-enter" aria-hidden="true" data-toggle="modal" data-target="#exampleModalCenter"></span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Panel title</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">Panel subtitle</h6>
+                                    <p class="card-text">Some quick example text to build on the panel title and make up the bulk of the panel's content.</p>
+                                    <p class="card-text"><canvas id="myChart"></canvas></p>
+                                    <a class="card-link">Card link</a>
+                                    <a class="card-link">Another link</a>
+                                </div>
+                            </div>
+
+                            <!-- Zoom Chart bottom right -->
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <canvas id="myChart2"></canvas>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Zoom Chart bottom right -->
+                        </div>
+                        <!-- End Chart bottom right -->
                     </div>
-                </div>
+                    <!-- End Definition of Dashboards -->
+                </main>
+                <!-- Dashboard - make up by different cards -->
+
             </div>
         </div>
-
-    <hr>
-
-
+        <!-- End filters and dashboards -->
 
 
 <div id="content" class="wrapper doc">
 <article>
-
-  <h1>Welcome to Play</h1>
-
-  <p>
-    Congratulations, you’ve just created a new Play application. This page will help you with the next few steps.
-  </p>
-
-  <blockquote>
-    <p>
-      You’re using Play @version
-    </p>
-  </blockquote>
-
-    <h2>Async Controller</h2>
-
-    Now that you've seen how Play renders a page, take a look at <code>AsyncController.scala</code>, which shows how to do asynchronous programming when handling a request.  The code is almost exactly the same as <code>HomeController.scala</code>, but instead of returning <code>Result</code>, the action returns <code>Future[String]</code> to Play.  When the execution completes, Play can use a thread to render the result without blocking the thread in the mean time.
-
-    <p>
-        <a href="@routes.AsyncController.message">Click here for the AsyncController action!</a>
-    </p>
-
-    <p>
-        You can read more about <a href="https://www.playframework.com/documentation/@version/ScalaAsync">asynchronous actions</a> in the documentation.
-    </p>
 
     <h2>Count Controller</h2>
 
@@ -170,37 +230,15 @@
         <input type="button" value="Get Name" id="get_name" >
     </p>
 
-    <p>
-        You can read more about <a href="https://www.playframework.com/documentation/@version/ScalaDependencyInjection">dependency injection</a> in the documentation.
-    </p>
 
-    <h2>Need more info on the console?</h2>
-
-  <p>
-    For more information on the various commands you can run on Play, i.e. running tests and packaging applications for production, see <a href="https://playframework.com/documentation/@version/PlayConsole">Using the Play console</a>.
-  </p>  
 
 </article>
 
-<aside>
-  <h3>Start here</h3>
-  <ul>
-    <li><a href="https://playframework.com/documentation/@version/PlayConsole">Using the Play console</a></li>
-    <li><a href="https://playframework.com/documentation/@version/IDE">Setting up your preferred IDE</a></li>
-    <li><a href="https://playframework.com/download#examples">Example Projects</a>
-  </ul>
-  <h3>Help here</h3>
-  <ul>
-    <li><a href="https://stackoverflow.com/questions/tagged/playframework">Stack Overflow</a></li>
-    <li><a href="https://discuss.playframework.com">Discuss Play Forum</a> </li>
-    <li><a href="https://gitter.im/playframework/playframework">Gitter Channel</a></li>
-  </ul>
-  
-</aside>
-
 </div>
 
+        <!-- This is the footer -->
         <footer class="container-fluid text-center">
             <p>Footer Text</p>
         </footer>
-}
+        <!-- End of the footer -->
+
