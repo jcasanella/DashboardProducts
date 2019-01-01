@@ -1,18 +1,29 @@
-name := """play-scala-starter-example"""
-
-version := "1.0-SNAPSHOT"
-
-lazy val root = (project in file(".")).enablePlugins(PlayScala)
+lazy val root = (project in file("."))
+  .enablePlugins(PlayScala)
+  .settings(
+    name := """WebFeeds""",
+    scalaVersion := "2.12.7",
+    version := "1.0-SNAPSHOT"
+  )
 
 resolvers += Resolver.sonatypeRepo("snapshots")
 
-scalaVersion := "2.12.7"
-
 crossScalaVersions := Seq("2.11.12", "2.12.7")
 
-libraryDependencies += guice
-libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test
-libraryDependencies += "com.h2database" % "h2" % "1.4.197"
-// https://mvnrepository.com/artifact/com.typesafe.play/play-json
-libraryDependencies += "com.typesafe.play" %% "play-json" % "2.6.13"
+val playSlickVersion = "3.0.0"
+val playJsonVersion = "2.6.13"
+val h2DatabaseVersion = "1.4.197"
+val scalaTestPlusPlay = "3.1.2"
+libraryDependencies ++= Seq(
+  guice,
+  "org.scalatestplus.play" %% "scalatestplus-play" % scalaTestPlusPlay % Test,
+  "com.typesafe.play" %% "play-json" % playJsonVersion,
+  specs2 % Test,
+  "com.typesafe.play" %% "play-slick" % playSlickVersion,
+  "com.typesafe.play" %% "play-slick-evolutions" % playSlickVersion,
+  "com.h2database" % "h2" % h2DatabaseVersion
+)
+
+
+
 

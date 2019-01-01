@@ -53,3 +53,5 @@ TODO:
 4. [2018-12-30]
 - Refinament prototype layout - Show graph in the dashboard and maximize button
 
+5. [2019-01-01]
+- Unit test using H2 in memory database and slick
