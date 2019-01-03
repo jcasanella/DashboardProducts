@@ -13,17 +13,17 @@ import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, ExecutionContext, Future}
 
 class ProductDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)(implicit executionContext: ExecutionContext)
-  extends HasDatabaseConfigProvider[JdbcProfile] {
+  extends HasDatabaseConfigProvider[JdbcProfile] with ModelDAO[Product] {
 
   import profile.api._
 
   private val products = TableQuery[ProductsTable]
 
-  def all(): Future[Seq[Product]] = db.run(products.result)
+  override def all(): Future[Seq[Product]] = db.run(products.result)
 
-  def insert(product: Product): Future[Unit] = db.run(products += product).map{ _ => () }
+  override def insert(product: Product): Future[Unit] = db.run(products += product).map{ _ => () }
 
-  def init() = {
+  override def init() = {
     val tables = Await.result(db.run(MTable.getTables), 1 seconds).toList.map(_.name.name)
     if (!tables.contains(products.baseTableRow.tableName))
       Await.result(db.run(products.schema.create), Duration.Inf)

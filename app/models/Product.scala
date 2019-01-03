@@ -2,7 +2,8 @@ package models
 
 import play.api.libs.json.{Json, Writes}
 
-case class Product(id: Int, name: String)
+class Model
+case class Product(id: Int, name: String) extends Model
 
 object Product {
   implicit val ProductWrites = new Writes[Product] {
