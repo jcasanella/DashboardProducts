@@ -2,18 +2,20 @@ package dao
 
 import javax.inject.Inject
 import models.Product
+import play.api.Logger
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import slick.dbio.DBIOAction
 import slick.jdbc.JdbcProfile
 import slick.jdbc.meta.MTable
+
 import scala.concurrent.duration.DurationInt
-
-
 import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, ExecutionContext, Future}
 
 class ProductDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)(implicit executionContext: ExecutionContext)
   extends HasDatabaseConfigProvider[JdbcProfile] with ModelDAO[Product] {
+
+  lazy val log = Logger.getClass
 
   import profile.api._
 
