@@ -21,7 +21,9 @@ libraryDependencies ++= Seq(
   specs2 % Test,
   "com.typesafe.play" %% "play-slick" % playSlickVersion,
   "com.typesafe.play" %% "play-slick-evolutions" % playSlickVersion,
-  "com.h2database" % "h2" % h2DatabaseVersion
+  "com.h2database" % "h2" % h2DatabaseVersion,
+  "org.postgresql" % "postgresql" % "42.2.5"
+
 )
 
 
