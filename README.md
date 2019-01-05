@@ -37,6 +37,67 @@ TODO:
 
 - Start to use React js
 
+## Postgres using docker
+
+These are all the steps to download and use postgres from a docker container.
+
+- pull the postgres image. If we don't specify the version, will pull the lastest.
+```
+docker pull postgres
+```
+
+- create a folder where we store the database files
+```
+mkdir -p $HOME/docker/volumes/postgres
+```
+
+- run the postgres container from the image.
+```
+docker run --rm   --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data  postgres
+```
+We have provided several options to the docker run command:  
+**--rm:** Automatically removes the container and it's associated file system when exit  
+**--name:** Id name for the container  
+**-e** Expose environment variable. In this case the variable is the password for the postgres user. PASSWORD is docker  
+**-d** launches the container in background mode  
+**-p** bind port 5432 with localhost port 5432  
+**-v** mount the folder with /var/lib/postgres  
+
+- let's connect with the container command line
+```
+docker exec -it pg-docker bash
+```
+Now we're connected to the container terminal.
+
+- Connection with pgsql
+```
+psql -h localhost -U postgres -d postgres
+```
+
+- Create db
+```
+CREATE DATABASE mytestdb;
+```
+*Note:* to exit \q
+
+- Install pgadmin4
+```
+docker pull fenglc/pgadmin4
+```
+
+- Run pgadmin4
+```
+docker run --name some-pgadmin4 -p 5050:5050 -d fenglc/pgadmin4
+```
+
+*pgadmin4 user:* pgadmin4@pgadmin.org
+*pgadmin4 password:* admin
+
+- To create the server with pgadmin4, we need to know the container ip (postgres)
+```
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name_or_id
+```
+
 ## Changes
 
 1. [2018-12-24]
