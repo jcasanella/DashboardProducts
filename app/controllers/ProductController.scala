@@ -13,7 +13,7 @@ import scala.concurrent.Future
 class ProductController @Inject()(cc: ControllerComponents)(implicit assetsFinder: AssetsFinder)
   extends AbstractController(cc) {
 
-  val products = List(Product(1, "Prod1"), Product(2, "Prod2"))
+  val products = List(Product(1, "Prod1"), Product(2, "Prod2"), Product(3, "Prod3"), Product(4, "Prod4"))
   val logger = Logger(getClass)
 
   def show = Action {
@@ -29,7 +29,7 @@ class ProductController @Inject()(cc: ControllerComponents)(implicit assetsFinde
 
   def showJson = Action.async { implicit request =>
     logger.debug("showJson - parsing")
-    val msg = Json.toJson(Product(1, "Prod"))
+    val msg = Json.toJson(products)
     Future.successful(Ok(msg))
   }
 
