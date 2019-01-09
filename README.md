@@ -78,7 +78,7 @@ psql -h localhost -U postgres -d postgres
 ```
 CREATE DATABASE mytestdb;
 ```
-*Note:* to exit \q
+**Note:** to exit \q
 
 - Install pgadmin4
 ```
