@@ -116,3 +116,6 @@ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' con
 
 5. [2019-01-01]
 - Unit test using H2 in memory database and slick
+
+6. [2019-01-10]
+- Populate listbox from postgresql + unit test postgresql
