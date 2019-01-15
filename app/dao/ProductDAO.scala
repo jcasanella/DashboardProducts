@@ -12,8 +12,11 @@ import scala.concurrent.duration.DurationInt
 import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, ExecutionContext, Future}
 
-class ProductDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)(implicit executionContext: ExecutionContext)
-  extends HasDatabaseConfigProvider[JdbcProfile] with ModelDAO[Product] {
+class ProductDAO @Inject()(
+    protected val dbConfigProvider: DatabaseConfigProvider
+)(implicit executionContext: ExecutionContext)
+    extends HasDatabaseConfigProvider[JdbcProfile]
+    with ModelDAO[Product] {
 
   lazy val log = Logger.getClass
 
@@ -23,14 +26,18 @@ class ProductDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvide
 
   override def all(): Future[Seq[Product]] = db.run(products.result)
 
-  override def insert(product: Product): Future[Unit] = db.run(products += product).map{ _ => () }
+  override def insert(product: Product): Future[Unit] =
+    db.run(products += product).map { _ =>
+      ()
+    }
 
   override def init() = {
-    val tables = Await.result(db.run(MTable.getTables), 1 seconds).toList.map(_.name.name)
+    val tables =
+      Await.result(db.run(MTable.getTables), 1 seconds).toList.map(_.name.name)
     if (!tables.contains(products.baseTableRow.tableName))
       Await.result(db.run(products.schema.create), Duration.Inf)
 
-   /*
+    /*
     val tables = List(products)
     val f = existing.flatMap( v => {
       val names = v.map(mt => mt.name.name)
@@ -39,10 +46,11 @@ class ProductDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvide
       db.run(DBIO.sequence(createIfNotExist))
     })
     Await.result(f, Duration.Inf)
-    */
+   */
   }
 
-  private class ProductsTable(tag: Tag) extends Table[Product](tag, "PRODUCTS") {
+  private class ProductsTable(tag: Tag)
+      extends Table[Product](tag, "PRODUCTS") {
     def id = column[Int]("ID", O.PrimaryKey)
     def name = column[String]("NAME")
 

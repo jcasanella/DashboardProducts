@@ -119,3 +119,6 @@ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' con
 
 6. [2019-01-10]
 - Populate listbox from postgresql + unit test postgresql
+
+7. [2019-01-15]
+- Enable scalaFmt and format the code

@@ -10,6 +10,8 @@ resolvers += Resolver.sonatypeRepo("snapshots")
 
 crossScalaVersions := Seq("2.11.12", "2.12.7")
 
+scalafmtOnCompile := false
+
 val playSlickVersion = "3.0.0"
 val playJsonVersion = "2.6.13"
 val h2DatabaseVersion = "1.4.197"

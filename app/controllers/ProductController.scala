@@ -14,11 +14,18 @@ import scala.concurrent.{ExecutionContext, Future}
 import scala.util.{Failure, Success}
 
 @Singleton
-class ProductController @Inject()(productDao: ProductDAO, cc: ControllerComponents)
-                                 (implicit ec: ExecutionContext, assetsFinder: AssetsFinder)
-  extends AbstractController(cc) {
+class ProductController @Inject()(
+    productDao: ProductDAO,
+    cc: ControllerComponents
+)(implicit ec: ExecutionContext, assetsFinder: AssetsFinder)
+    extends AbstractController(cc) {
 
-  val products = List(Product(1, "Prod1"), Product(2, "Prod2"), Product(3, "Prod3"), Product(4, "Prod4"))
+  val products = List(
+    Product(1, "Prod1"),
+    Product(2, "Prod2"),
+    Product(3, "Prod3"),
+    Product(4, "Prod4")
+  )
   val logger = Logger(getClass)
 
   def show = Action {

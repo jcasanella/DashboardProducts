@@ -13,17 +13,19 @@ import scala.concurrent.{Await, Future}
 class DatabaseSpec extends FlatSpec with Matchers with GuiceOneAppPerSuite {
 
   implicit override lazy val app = new GuiceApplicationBuilder()
-    .configure(Map(
-      "slick.dbs.default.profile"->"slick.jdbc.H2Profile$",
-      "slick.dbs.default.db.driver"->"org.h2.Driver",
-      "slick.dbs.default.db.url"->"jdbc:h2:mem:play;MODE=MYSQL;DB_CLOSE_DELAY=-1"
-    )
+    .configure(
+      Map(
+        "slick.dbs.default.profile"   -> "slick.jdbc.H2Profile$",
+        "slick.dbs.default.db.driver" -> "org.h2.Driver",
+        "slick.dbs.default.db.url"    -> "jdbc:h2:mem:play;MODE=MYSQL;DB_CLOSE_DELAY=-1"
+      )
     )
     .build()
 
-  def productDao(implicit app: Application) = Application.instanceCache[ProductDAO].apply(app)
+  def productDao(implicit app: Application) =
+    Application.instanceCache[ProductDAO].apply(app)
 
-  "Content of products table" should  "be the same as testProducts set" in {
+  "Content of products table" should "be the same as testProducts set" in {
 
     productDao.init()
 
@@ -33,7 +35,10 @@ class DatabaseSpec extends FlatSpec with Matchers with GuiceOneAppPerSuite {
       Product(3, "product3")
     )
 
-    Await.result(Future.sequence(testProducts.map(productDao.insert)), 1 seconds)
+    Await.result(
+      Future.sequence(testProducts.map(productDao.insert)),
+      1 seconds
+    )
     val stored = Await.result(productDao.all(), 1 seconds)
 
     stored.toSet == testProducts
