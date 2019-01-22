@@ -125,3 +125,4 @@ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' con
 
 8. [2019-01-22]
 - Parser command line httpClient
+- Get properties from build.sbt

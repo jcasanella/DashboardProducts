@@ -1,6 +1,6 @@
-name := "Dashboard"
+//name := "Dashboard"
 
-lazy val commonSettings = Seq(
+lazy val resolverSettings = Seq(
   resolvers ++= Seq(
     Resolver.sonatypeRepo("snapshots"),
 	  Resolver.sonatypeRepo("releases")
@@ -11,11 +11,13 @@ lazy val root = (project in file("."))
   .aggregate(dashboardHttp, dashboardApp)
 
 lazy val dashboardHttp = (project in file("DashboardHttp"))
+  .enablePlugins(BuildInfoPlugin)
   .settings(
-    name := """DashboardHttp""",
+    name := "DashboardHttp",
     settings,
     version := "1.0-SNAPSHOT",
-    crossScalaVersions := Seq("2.11.12", "2.12.7"),
+    buildInfoKeys := Seq[BuildInfoKey](name, version, scalaVersion),
+    buildInfoPackage := "com.sbt.properties",
     libraryDependencies ++= httpDependencies
   )
 
@@ -25,7 +27,6 @@ lazy val dashboardApp = (project in file("DashboardApp"))
     name := """DashboardApp""",
     settings,
     version := "1.0-SNAPSHOT",
-	  crossScalaVersions := Seq("2.11.12", "2.12.7"),
 	  libraryDependencies ++= appDependencies ++
       Seq(
         guice,
@@ -96,10 +97,11 @@ lazy val appDependencies = Seq(
 
 lazy val settings = 
   scalafmtSettings ++ 
-  commonSettings ++
+  resolverSettings ++
   Seq(
     scalaVersion := "2.12.7",
-    organization := "com.dashboard.jordi"
+    organization := "com.dashboard.jordi",
+    crossScalaVersions := Seq("2.11.12", "2.12.7")
   )
 
 lazy val scalafmtSettings =

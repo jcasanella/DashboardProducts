@@ -14,7 +14,7 @@ object QuickstartServer extends App with UserRoutes {
 
   ParserCmdLine(args) match {
     case Some(cmd) => println(s"Params are working: ${cmd.name} ${cmd.key}")
-    case None => println("Error params are not working")
+    case None      => println("Error params are not working")
   }
 
   // set up ActorSystem and other dependencies here
