@@ -125,3 +125,6 @@ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' con
 
 8. [2019-01-20]
 - Multiproject: DashboardApp (Web) and DashboardHttp (Client to web service)
+
+9. [2019-01-22]
+- Parser command line httpClient

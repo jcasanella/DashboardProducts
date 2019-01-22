@@ -122,3 +122,6 @@ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' con
 
 7. [2019-01-15]
 - Enable scalaFmt and format the code
+
+8. [2019-01-22]
+- Parser command line httpClient

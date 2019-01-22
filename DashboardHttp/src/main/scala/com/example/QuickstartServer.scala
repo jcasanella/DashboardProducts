@@ -3,14 +3,19 @@ package com.example
 //#quick-start-server
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
-
 import akka.actor.{ActorRef, ActorSystem}
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.server.Route
 import akka.stream.ActorMaterializer
+import com.parser.cmd.ParserCmdLine
 
 //#main-class
 object QuickstartServer extends App with UserRoutes {
+
+  ParserCmdLine(args) match {
+    case Some(cmd) => println(s"Params are working: ${cmd.name} ${cmd.key}")
+    case None => println("Error params are not working")
+  }
 
   // set up ActorSystem and other dependencies here
   //#main-class
