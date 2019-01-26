@@ -8,4 +8,8 @@ addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.6.20")
 addSbtPlugin("com.geirsson" % "sbt-scalafmt" % "1.5.1")
 //addSbtPlugin("com.lucidchart" % "sbt-scalafmt-coursier" % "1.12")
 
+// Creates a class to read properties from build.sbt
+addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.9.0")
+
+
 

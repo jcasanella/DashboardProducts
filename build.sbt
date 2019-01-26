@@ -48,6 +48,8 @@ lazy val dependencies =
 	  val sflj4Version      = "1.6.4"
     val scalatestVersion  = "3.0.1"
 	  val postgresqlVersion = "42.2.5"
+    val scalazVersion     = "7.2.27"
+    val reflectVersion    = "2.12.7"
 	
     val testPlusPlay        = "org.scalatestplus.play" %% "scalatestplus-play"    % scalaTestPlusPlay    % Test
     val playJson            = "com.typesafe.play"      %% "play-json"             % playJsonVersion
@@ -64,7 +66,9 @@ lazy val dependencies =
     val slick               = "com.typesafe.slick"     %% "slick"                 % slickVersion
     val slf4jNop            = "org.slf4j"               % "slf4j-nop"             % sflj4Version
     val slickHirakicp       = "com.typesafe.slick"     %% "slick-hikaricp"        % slickVersion
-      
+    val scalaz              = "org.scalaz"             %% "scalaz-core"           % scalazVersion
+    val scalaReflect        = "org.scala-lang"          % "scala-reflect"         % reflectVersion
+
     val akkaHttpTestKit     = "com.typesafe.akka"      %% "akka-http-testkit"     % akkaHttpVersion      % Test
     val akkaTestKit         = "com.typesafe.akka"      %% "akka-testkit"          % akkaVersion          % Test
     val akkaStreamTestKit   = "com.typesafe.akka"      %% "akka-stream-testkit"   % akkaVersion          % Test
@@ -79,7 +83,9 @@ lazy val httpDependencies = Seq(
   dependencies.scopt,             
   dependencies.slick,             
   dependencies.slf4jNop,          
-  dependencies.slickHirakicp,     
+  dependencies.slickHirakicp,    
+  dependencies.scalaz,
+  dependencies.scalaReflect,
   dependencies.akkaHttpTestKit,   
   dependencies.akkaTestKit,       
   dependencies.akkaStreamTestKit, 
