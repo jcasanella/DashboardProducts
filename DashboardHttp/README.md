@@ -129,3 +129,6 @@ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' con
 
 9. [2019-02-11]
 - First cast case class - csv
+
+10. [2019-02-12]
+- Reflection cast to case class - implicit class (pimped) to do the cast
