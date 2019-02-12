@@ -10,12 +10,10 @@ pipeline {
         }
         stage('Test') {
             parallel {
-                stage('Test') {
-                   steps {
-                        echo 'Test...'
-                        sh "${tool name: 'sbt', type: 'org.jvnet.hudson.plugins.SbtPluginBuilder$SbtInstallation'}/bin/sbt test"
-                   }
-                }
+               steps {
+                    echo 'Test...'
+                    sh "${tool name: 'sbt', type: 'org.jvnet.hudson.plugins.SbtPluginBuilder$SbtInstallation'}/bin/sbt test"
+               }
             }
         }
         stage('Deploy') {
