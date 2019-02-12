@@ -10,14 +10,11 @@ pipeline {
         }
         stage('Test') {
             parallel {
-                stage('Test on Linux') {
-                    agent {
-                        label "linux"
-                    }
-                    steps {
+                stage('Test') {
+                   steps {
                         echo 'Test...'
                         sh "${tool name: 'sbt', type: 'org.jvnet.hudson.plugins.SbtPluginBuilder$SbtInstallation'}/bin/sbt test"
-                    }
+                   }
                 }
             }
         }
