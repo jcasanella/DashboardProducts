@@ -2,24 +2,21 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'DEVL',
-                    credentialsId: '',
-                    url: 'ssh://git@...'
-
-                sh "ls -la"
-            }
-        }
         stage('Build') {
+            node {
+                checkout scm
+            }
             steps {
                 echo 'Building...'
                 sh "${tool name: 'sbt', type: 'org.jvnet.hudson.plugins.SbtPluginBuilder$SbtInstallation'}/bin/sbt compile"
             }
         }
         stage('Test') {
-            parallel linux: {
-                node('linux') {
+            parallel {
+                stage('Test on Linux') {
+                    agent {
+                        label "linux"
+                    }
                     steps {
                         echo 'Test...'
                         sh "${tool name: 'sbt', type: 'org.jvnet.hudson.plugins.SbtPluginBuilder$SbtInstallation'}/bin/sbt test"
