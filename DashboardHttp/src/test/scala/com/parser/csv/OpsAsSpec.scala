@@ -5,9 +5,9 @@ import org.scalatest.{FlatSpec, Inside, Matchers}
 class OpsAsSpec extends FlatSpec with Matchers with Inside with OpsAsFixtures {
 
   "The line cadena1,cadena2" should "be casted to a case class Test1(field1: String, field2: String)" in {
-    import ReflectionHelpers._
+    import implicits.converts
     val t1 = Test1("cadena1", "cadena2")
-    val tf = lineTest1.As[Test1]()
+    val tf = lineTest1.As[Test1]
 
     tf should equal(t1)
     inside(tf)  {
@@ -18,9 +18,9 @@ class OpsAsSpec extends FlatSpec with Matchers with Inside with OpsAsFixtures {
   }
 
   "The line anna,56,london" should "be casted to a case class Person(name: String, age: Int, address: String)" in {
+    import implicits.converts
     val person1 = Person("anna", 56, "london")
-    import ReflectionHelpers._
-    val person2 = lineTest2.As[Person]()
+    val person2 = lineTest2.As[Person]
 
     person2 should equal(person1)
     inside(person2) {
@@ -33,10 +33,9 @@ class OpsAsSpec extends FlatSpec with Matchers with Inside with OpsAsFixtures {
 
   "The line true,123455678,trex,big animal" should "be casted to a case class Animal(isAlive: Boolean, ages: Long, " +
     "name: String, description: String" in {
+    import implicits.converts
     val animal1 = Animal(true, 123455678, "trex", "big animal")
-
-    import ReflectionHelpers._
-    val animal2 = lineTest3.As[Animal]()
+    val animal2 = lineTest3.As[Animal]
 
     animal2 should equal(animal1)
     inside(animal2) {
