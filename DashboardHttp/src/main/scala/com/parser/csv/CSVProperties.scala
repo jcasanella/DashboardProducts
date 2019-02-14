@@ -1,3 +1,9 @@
 package com.parser.csv
 
-case class CSVProperties(delimiter: String = ",", header: Boolean = false)
+sealed trait CSVProps {
+  def delimiter: String
+  def header: Boolean
+  def quote: String
+}
+
+case class CSVProperties(delimiter: String = ",", header: Boolean = false, quote: String = "") extends CSVProps
