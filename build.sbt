@@ -73,7 +73,7 @@ lazy val dependencies =
     val akkaStreamTestKit   = "com.typesafe.akka"      %% "akka-stream-testkit"             % akkaVersion          % Test
     val scalaTest           = "org.scalatest"          %% "scalatest"                       % scalatestVersion     % Test
     val dockerTestKit       = "com.whisk"              %% "docker-testkit-scalatest"        % dockerTestKitVersion % Test
-    val dockerTestKitJava   = "com.whisk"              %% "docker-testkit-impl-docker-java" % dockerTestKitVersion % Test
+    val dockerTestKitJava   = "com.whisk"              %% "docker-testkit-impl-spotify"     % dockerTestKitVersion % Test
   }
 
 lazy val httpDependencies = Seq(
