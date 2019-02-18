@@ -129,3 +129,9 @@ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' con
 9. [2019-01-22]
 - Parser command line httpClient
 - Get properties from build.sbt
+
+10. [2019-02-10]
+- Creation jenkinsFile
+
+10. [2019-02-18]
+- Enable dockerCompose
