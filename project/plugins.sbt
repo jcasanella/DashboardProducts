@@ -11,5 +11,12 @@ addSbtPlugin("com.geirsson" % "sbt-scalafmt" % "1.5.1")
 // Creates a class to read properties from build.sbt
 addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.9.0")
 
+// Docker test
+addSbtPlugin("com.tapad" % "sbt-docker-compose" % "1.0.34")
+addSbtPlugin("se.marcuslonnberg" % "sbt-docker" % "1.5.0")
+
+// Fat jars
+addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.1.0")
+
 
 

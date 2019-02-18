@@ -5,18 +5,17 @@ lazy val resolverSettings = Seq(
   )
 )
 
-lazy val root = (project in file("."))
-  .aggregate(dashboardHttp, dashboardApp)
-
 lazy val dashboardHttp = (project in file("DashboardHttp"))
   .enablePlugins(BuildInfoPlugin)
+  .enablePlugins(DockerComposePlugin)
   .settings(
     name := "DashboardHttp",
     settings,
     version := "1.0-SNAPSHOT",
     buildInfoKeys := Seq[BuildInfoKey](name, version, scalaVersion),
     buildInfoPackage := "com.sbt.properties",
-    libraryDependencies ++= httpDependencies
+    libraryDependencies ++= httpDependencies,
+    dockerImageCreationTask := (publishLocal in Docker).value
   )
 
 lazy val dashboardApp = (project in file("DashboardApp"))
@@ -48,7 +47,6 @@ lazy val dependencies =
     val postgresqlVersion = "42.2.5"
     val scalazVersion = "7.2.27"
     val reflectVersion = "2.12.7"
-    val dockerTestKitVersion = "0.9.8"
 
     val testPlusPlay        = "org.scalatestplus.play" %% "scalatestplus-play"              % scalaTestPlusPlay    % Test
     val playJson            = "com.typesafe.play"      %% "play-json"                       % playJsonVersion
@@ -72,8 +70,6 @@ lazy val dependencies =
     val akkaTestKit         = "com.typesafe.akka"      %% "akka-testkit"                    % akkaVersion          % Test
     val akkaStreamTestKit   = "com.typesafe.akka"      %% "akka-stream-testkit"             % akkaVersion          % Test
     val scalaTest           = "org.scalatest"          %% "scalatest"                       % scalatestVersion     % Test
-    val dockerTestKit       = "com.whisk"              %% "docker-testkit-scalatest"        % dockerTestKitVersion % Test
-    val dockerTestKitJava   = "com.whisk"              %% "docker-testkit-impl-spotify"     % dockerTestKitVersion % Test
   }
 
 lazy val httpDependencies = Seq(
@@ -90,9 +86,7 @@ lazy val httpDependencies = Seq(
   dependencies.akkaHttpTestKit,
   dependencies.akkaTestKit,
   dependencies.akkaStreamTestKit,
-  dependencies.scalaTest,
-  dependencies.dockerTestKit,
-  dependencies.dockerTestKitJava
+  dependencies.scalaTest
 )
 
 lazy val appDependencies = Seq(
@@ -105,13 +99,13 @@ lazy val appDependencies = Seq(
 )
 
 lazy val settings =
-scalafmtSettings ++
-resolverSettings ++
-Seq(
-  scalaVersion := "2.12.7",
-  organization := "com.dashboard.jordi",
-  crossScalaVersions := Seq("2.11.12", "2.12.7")
-)
+  scalafmtSettings ++
+  resolverSettings ++
+  Seq(
+    scalaVersion := "2.12.7",
+    organization := "com.dashboard.jordi",
+    crossScalaVersions := Seq("2.11.12", "2.12.7")
+  )
 
 lazy val scalafmtSettings =
   Seq(

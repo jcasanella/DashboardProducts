@@ -6,4 +6,8 @@ sealed trait CSVProps {
   def quote: String
 }
 
-case class CSVProperties(delimiter: String = ",", header: Boolean = false, quote: String = "") extends CSVProps
+case class CSVProperties(
+    delimiter: String = ",",
+    header: Boolean = false,
+    quote: String = ""
+) extends CSVProps
