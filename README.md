@@ -135,3 +135,6 @@ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' con
 
 11. [2019-02-18]
 - Enable dockerCompose
+
+12. [2019-03-17]
+- First version http client using Akka Http
