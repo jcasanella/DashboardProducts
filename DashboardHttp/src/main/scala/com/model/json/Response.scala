@@ -1,8 +1,7 @@
 package com.model.json
 
-case class GeoBias(lat: Double, lon: Double)
 case class Summary(queryType: String, queryTime: Int, numResults: Int, offset: Int, totalResults: Int,
-                   fuzzyLevel: Int, geoBias: GeoBias)
+                   fuzzyLevel: Int, geoBias: Position)
 
 case class Name(nameLocale: String, name: String)
 case class Classification(code: String, names: Array[Name])
@@ -11,11 +10,11 @@ case class Address(countrySecondarySubdivision: String, countryTertiarySubdivisi
                    countrySubdivision: String, countryCode: String, country: String, countryCodeISO3: String,
                    freeformAddress: String, countrySubdivisionName: String)
 case class Position(lat: Double, lon: Double)
-case class TopLeftPoint(lat: Double, lon: Double)
-case class BtmRightPoint(lat: Double, lon: Double)
-case class Viewport(topLeftPoint: TopLeftPoint, btmRightPoint: BtmRightPoint)
-case class Result(typeRes: String, id: String, score: Int, dist: Int, info: String, poi: Poi, address: Address,
+case class Viewport(topLeftPoint: Position, btmRightPoint: Position)
+case class Result(typeRes: String, id: String, score: Double, dist: Double, info: String, poi: Poi, address: Address,
                   position: Position, viewport: Viewport)
+
+case class Response(summary: Summary, results: Array[Result])
 
 
 

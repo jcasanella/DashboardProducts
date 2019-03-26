@@ -13,9 +13,9 @@ class JsonSpec extends FlatSpec with Matchers with JsonFixtures {
     val geoBiasAst = geoBiasMsg.parseJson
     println(geoBiasAst.prettyPrint)
 
-    val geoBiasObj = geoBiasAst.convertTo[GeoBias]
-    geoBiasObj.isInstanceOf[GeoBias] shouldBe true
-    geoBiasObj should equal (GeoBias(37.8085, -122.4239))
+    val geoBiasObj = geoBiasAst.convertTo[Position]
+    geoBiasObj.isInstanceOf[Position] shouldBe true
+    geoBiasObj should equal (Position(37.8085, -122.4239))
   }
 
   "Summary message" should "be parsed" in {
@@ -31,7 +31,7 @@ class JsonSpec extends FlatSpec with Matchers with JsonFixtures {
       offset = 0,
       totalResults = 1,
       fuzzyLevel = 1,
-      GeoBias(lat = 37.8085, lon = -122.4239)
+      geoBias = Position(lat = 37.8085, lon = -122.4239)
     ))
   }
 
@@ -88,5 +88,69 @@ class JsonSpec extends FlatSpec with Matchers with JsonFixtures {
       freeformAddress = "San Francisco, CA",
       countrySubdivisionName = "California"
     ))
+  }
+
+  "Viewport Msg" should "be parsed" in {
+
+    val viewportAst = viewportMsg.parseJson
+    println(viewportAst.prettyPrint)
+
+    val viewportObj = viewportAst.convertTo[Viewport]
+    viewportObj should equal (Viewport(Position(37.80888, -122.42528), Position(37.80708,-122.423)))
+  }
+
+  "Result Msg" should "be parsed" in {
+
+    val resultAst = resultMsg.parseJson
+    println(resultAst.prettyPrint)
+
+    val resultObj = resultAst.convertTo[Result]
+    val resCase = Result(
+      typeRes = "POI", id = "US/POI/p1/2276408", score = -0.062, dist = 61.54567482552456, info = "search:ta:840069002463939-US",
+      poi = Poi(
+        name = "Aquatic Cove",
+        categories = Array[String]("bay", "geographic feature"),
+        classifications = Array[Classification](
+          Classification(
+            code = "GEOGRAPHIC_FEATURE",
+            names = Array[Name](
+              Name(nameLocale = "en-US", name = "bay"),
+              Name(nameLocale = "en-US", name = "geographic feature")
+            )
+          )
+        )
+      ),
+      address = Address(
+        countrySecondarySubdivision = "San Francisco",
+        countryTertiarySubdivision = "San Francisco",
+        countrySubdivision = "CA",
+        countryCode = "US",
+        country = "United States Of America",
+        countryCodeISO3 = "USA",
+        freeformAddress = "San Francisco, CA",
+        countrySubdivisionName = "California"
+      ),
+      position = Position(lat = 37.80798, lon = -122.42414),
+      viewport = Viewport(Position(lat = 37.80888, lon = -122.42528), Position(lat = 37.80708, lon = -122.423))
+    )
+
+    // Simple attributes Equal
+    resultObj.typeRes shouldBe (resCase.typeRes)
+    resultObj.id shouldBe (resCase.id)
+    resultObj.score shouldBe (resCase.score)
+    resultObj.dist shouldBe (resCase.dist)
+    resultObj.info shouldBe (resCase.info)
+
+    resultObj.address should equal (resCase.address)
+    resultObj.position should equal (resCase.position)
+    resultObj.viewport should equal (resCase.viewport)
+
+    resultObj.poi.name shouldBe (resCase.poi.name)
+    resultObj.poi.categories shouldBe (resCase.poi.categories)
+
+    (0 until resultObj.poi.classifications.length by 1).foreach(idx => {
+      resultObj.poi.classifications(idx).code should equal (resCase.poi.classifications(idx).code)
+      resultObj.poi.classifications(idx).names should equal (resCase.poi.classifications(idx).names)
+    })
   }
 }

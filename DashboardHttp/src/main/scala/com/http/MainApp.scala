@@ -20,6 +20,7 @@ object MainApp extends App {
 
   val baseUrl = "https://api.tomtom.com"
   val versionNumber = "2"
+  val keyApp = "NhDiMjpG7VGMF11YBsCVIfexRtXraOgj"
   val callApi = "nearbySearch"
 
   val response: Future[HttpResponse] =
