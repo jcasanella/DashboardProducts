@@ -1,69 +1,92 @@
 {
-  "summary": {
-    "queryType": "NEARBY",
-    "queryTime": 17,
-    "numResults": 1,
-    "offset": 0,
-    "totalResults": 1,
-    "fuzzyLevel": 1,
-    "geoBias": {
-      "lat": 37.8085,
-      "lon": -122.4239
+  "summary":{
+    "queryType":"NEARBY",
+    "queryTime":13,
+    "numResults":1,
+    "offset":0,
+    "totalResults":49,
+    "fuzzyLevel":1,
+    "geoBias":{
+      "lat":40.769,
+      "lon":-73.9549
     }
   },
-  "results": [
+  "results":[
     {
-      "type": "POI",
-      "id": "US/POI/p1/2276408",
-      "score": -0.062,
-      "dist": 61.54567482552456,
-      "info": "search:ta:840069002463939-US",
-      "poi": {
-        "name": "Aquatic Cove",
-        "categories": [
-          "bay",
-          "geographic feature"
-        ],
-        "classifications": [
+      "type":"POI",
+      "id":"US\/POI\/p0\/7976701",
+      "score":-0.01028,
+      "dist":10.276022029735637,
+      "info":"search:ta:840369002928185-US",
+      "poi":{
+        "name":"Creative Cakes",
+        "phone":"+(1)-(212)-7949811",
+        "categorySet":[
           {
-            "code": "GEOGRAPHIC_FEATURE",
-            "names": [
+            "id":9361018
+          }
+        ],
+        "url":"www.creativecakesny.com",
+        "categories":[
+          "food drinks: bakers",
+          "shop"
+        ],
+        "classifications":[
+          {
+            "code":"SHOP",
+            "names":[
               {
-                "nameLocale": "en-US",
-                "name": "bay"
+                "nameLocale":"en-US",
+                "name":"shop"
               },
               {
-                "nameLocale": "en-US",
-                "name": "geographic feature"
+                "nameLocale":"en-US",
+                "name":"food drinks: bakers"
               }
             ]
           }
         ]
       },
-      "address": {
-        "countrySecondarySubdivision": "San Francisco",
-        "countryTertiarySubdivision": "San Francisco",
-        "countrySubdivision": "CA",
-        "countryCode": "US",
-        "country": "United States Of America",
-        "countryCodeISO3": "USA",
-        "freeformAddress": "San Francisco, CA",
-        "countrySubdivisionName": "California"
+      "address":{
+        "streetNumber":"400",
+        "streetName":"E 74th St",
+        "municipalitySubdivision":"Upper East Side, New York, Lenox Hill",
+        "municipality":"Manhattan, New York",
+        "countrySecondarySubdivision":"New York",
+        "countryTertiarySubdivision":"Manhattan",
+        "countrySubdivision":"NY",
+        "postalCode":"10021",
+        "extendedPostalCode":"100210187",
+        "countryCode":"US",
+        "country":"United States",
+        "countryCodeISO3":"USA",
+        "freeformAddress":"400 E 74th St, New York,NY 10021",
+        "localName":"New York",
+        "countrySubdivisionName":"New York"
       },
-      "position": {
-        "lat": 37.80798,
-        "lon": -122.42414
+      "position":{
+        "lat":40.76896,
+        "lon":-73.95479
       },
-      "viewport": {
-        "topLeftPoint": {
-          "lat": 37.80888,
-          "lon": -122.42528
+      "viewport":{
+        "topLeftPoint":{
+          "lat":40.76986,
+          "lon":-73.95598
         },
-        "btmRightPoint": {
-          "lat": 37.80708,
-          "lon": -122.423
+        "btmRightPoint":{
+          "lat":40.76806,
+          "lon":-73.9536
         }
-      }
+      },
+      "entryPoints":[
+        {
+          "type":"main",
+          "position":{
+            "lat":40.769,
+            "lon":-73.95476
+          }
+        }
+      ]
     }
   ]
 }

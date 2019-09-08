@@ -20,19 +20,18 @@ object MainApp extends App {
 
   val baseUrl = "https://api.tomtom.com"
   val versionNumber = "2"
-  val keyApp = "NhDiMjpG7VGMF11YBsCVIfexRtXraOgj"
   val callApi = "nearbySearch"
 
   val response: Future[HttpResponse] =
     Http().singleRequest(
       HttpRequest(
         method = HttpMethods.GET,
-        uri = s"${baseUrl}/search/${versionNumber}/search/${callApi}/.json?" +
-        s"key=${keyApp}" +
-        s"&lat=37.8085" +
-        s"&lon=-122.4239" +
-        s"&radius=100" +
-        "&limit=1000" +
+        uri = s"${baseUrl}/search/${versionNumber}/${callApi}/.json?" +
+        s"key=${KeyApp.keyApp}" +
+        s"&lat=40.769" +
+        s"&lon=-73.9549" +
+        s"&radius=50" +
+        "&limit=100" +
         "&language=en-us"
       )
     )
